@@ -34,5 +34,14 @@ namespace Exercicio8.Controllers
                 token
             };
         }
+        [HttpPost]
+        [Route("anonymous")]
+        [AllowAnonymous]
+        public string Anonymous() => "Anônimo";
+
+        [HttpPost]
+        [Route("authenticated")]
+        [Authorize]
+        public string Authenticated() => string.Format("Autenticado - {0}", User.Identity.Name);
     }
 }
